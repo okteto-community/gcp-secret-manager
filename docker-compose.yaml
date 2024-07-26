@@ -1,0 +1,7 @@
+services:
+  hello-world:
+    build: .
+    env_file:
+      - .env-okteto
+    ports:
+      - 8080:8080
