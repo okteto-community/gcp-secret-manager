@@ -10,6 +10,10 @@ deploy:
     - name: Create the .env file using the secrets stored in Secret Manager
       command: gcloud secrets versions access "latest" --secret=top-secret-information > .env-okteto
 
+    # Temporary command needed to download the latest version of Okteto CLI. Remove when 2.30.x is released.
+    - name: Update Okteto CLI
+      command: curl https://get.okteto.com -sSfL | OKTETO_CHANNEL=dev sh
+
     - name: Deploy the application
       command: okteto deploy --file docker-compose.yaml
 
