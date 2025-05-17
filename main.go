@@ -15,5 +15,13 @@ func main() {
 }
 
 func helloServer(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hi, my name is %s, and my favorite color is %s", os.Getenv("MY_NAME"), os.Getenv("MY_COLOR"))
+	name := os.Getenv("MY_NAME")
+	if name == "" {
+		name = "unknown"
+	}
+	color := os.Getenv("MY_COLOR")
+	if color == "" {
+		color = "unknown"
+	}
+	fmt.Fprintf(w, "Hi, my name is %s, and my favorite color is %s", name, color)
 }
